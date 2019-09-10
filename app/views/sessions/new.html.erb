@@ -1,0 +1,24 @@
+<h1>Log in</h1>
+
+<%= form_for :session, url: login_path do |f| %>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <ul>
+        <li><%= error %></li>
+      </ul>
+    <% end %>
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <br>
+  <%= f.label :remember_me do %>
+    <%= f.check_box :remember_me %>
+    <span>(remember me)</span>
+  <% end %>
+
+  <br>
+
+  <%= f.submit "Log in user" %>
+<% end %>
