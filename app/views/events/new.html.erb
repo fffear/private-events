@@ -1,0 +1,28 @@
+<h1>Create new event</h1>
+
+<%= form_for @event, url: events_path do |f| %>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <ul>
+        <li><%= error %></li>
+      </ul>
+    <% end %>
+  <% end %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <br>
+
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+
+  <br>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <br>
+
+  <%= f.submit "Create event" %>
+<% end %>

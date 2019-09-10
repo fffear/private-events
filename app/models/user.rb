@@ -17,6 +17,11 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   validates :name, presence: true
 
+  has_many :created_events, {
+    class_name: :Event,
+    foreign_key: :creator_id
+  }
+
   # Returns a random token.
   scope :new_token, -> { SecureRandom.urlsafe_base64 }
 

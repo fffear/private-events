@@ -2,3 +2,11 @@
 
 <p><%= @user.created_at %></p>
 <p><%= @user.updated_at %></p>
+
+<dl>
+  <% @user.created_events.each do |created_event| %>
+    <dt><%= created_event.title %></dt>
+    <dd><%= created_event.date %></dd>
+    <dd><%= created_event.description %></dd>
+  <% end %>
+</dl>
