@@ -12,6 +12,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to @event
     else
+      flash.now[:errors] = @event.errors.full_messages
       render 'new'
     end
   end
@@ -25,3 +26,4 @@ class EventsController < ApplicationController
       params.require(:event).permit(:title, :date, :description)
     end
 end
+

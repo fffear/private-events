@@ -22,4 +22,15 @@ RSpec.describe User, type: :model do
     expect(user).to_not be_valid
   end
   
+  describe 'assocations' do
+    it 'expect user#created_events to return event objects created by user' do
+      user = FactoryBot.create(:user)
+      event = user.created_events.create(date: 2.days.from_now,
+                                         title: "Test Title",
+                                         description: "Test description")
+      expect(user.created_events.count).to eq(1)
+      expect(user.created_events[0].class).to be(Event)
+      expect(user.created_events[0].creator_id).to be(user.id)
+    end
+  end
 end

@@ -19,5 +19,18 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe 'associations' do
+    let(:user) { FactoryBot.create(:user) }
+    
+    describe '#creator' do
+      it 'should return the user who created the event' do
+        event = user.created_events.create(date: 2.days.from_now,
+                                           title: "Test Title",
+                                           description: "Test description")
+        expect(event.creator).to eq(user)
+      end
+    end
+  end
 end
