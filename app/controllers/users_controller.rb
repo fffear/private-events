@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :requires_no_login!, only: %i(new create)
+
   def new
     @user = User.new
   end
@@ -15,6 +17,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.includes(:created_events).find(params[:id])
+    @prev_events = @user.previous_events
+    @upcoming_events = @user.upcoming_events
   end
 
   private

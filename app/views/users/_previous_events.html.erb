@@ -1,0 +1,6 @@
+<h2>Previous Events</h2>
+<ul>
+  <% prev_events.each do |prev_event| %>
+    <li><%= link_to prev_event.title, prev_event %></li>
+  <% end %>
+</ul>

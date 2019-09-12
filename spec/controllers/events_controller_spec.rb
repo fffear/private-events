@@ -7,7 +7,7 @@ RSpec.describe EventsController, type: :controller do
     describe 'events#new' do
       it 'renders event creation form page' do
         get :new, {}
-        expect(response).to render_template('new')
+        expect(response).to redirect_to root_url
       end
     end
 

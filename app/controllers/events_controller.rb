@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :requires_login!, only: %i(new create)
+
   def index
     @events = Event.all
   end
@@ -18,7 +20,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.includes(:creator).find(params[:id])
+    @event = Event.includes(:creator, :attendees).find(params[:id])
   end
 
   private
@@ -26,4 +28,3 @@ class EventsController < ApplicationController
       params.require(:event).permit(:title, :date, :description)
     end
 end
-

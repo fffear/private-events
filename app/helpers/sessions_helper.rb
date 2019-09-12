@@ -36,4 +36,12 @@ module SessionsHelper
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
+
+  def requires_no_login!
+    redirect_to root_url if logged_in?
+  end
+
+  def requires_login!
+    redirect_to root_url unless logged_in?
+  end
 end

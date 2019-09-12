@@ -18,6 +18,8 @@
 
 FactoryBot.define do
   factory :event do
-    
+    date { 1.day.from_now }
+    title { "Sample Title" }
+    description { "Sample description" }
   end
 end

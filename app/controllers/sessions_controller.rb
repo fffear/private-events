@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :requires_no_login!, only: %i(new create)
+
   def new
   end
 

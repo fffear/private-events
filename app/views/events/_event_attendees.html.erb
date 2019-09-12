@@ -1,0 +1,5 @@
+<ul>
+  <% event_attendees.each do |attendee| %>
+    <li><%= link_to attendee.name, attendee %></li>
+  <% end %>
+</ul>
